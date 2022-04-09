@@ -10,6 +10,9 @@
       ],
       "@style/*": [
         "style/*"
+      ],
+      "@hooks/*": [
+        "hooks/*"
       ]
     },
     "target": "es5",
