@@ -1,9 +1,15 @@
+import { useWeb3 } from "@components/providers";
+
 const WalletBar = () => {
+  const { connect, isLoading, web3, hooks }: any = useWeb3();
+  const { account } = hooks.useAccount()
+  const { network } = hooks.useNetwork()
+
   return (
     <section className="text-white bg-indigo-600">
       <div className="p-8">
         <h1 className="text-2xl">
-          Hello, 0xd9D5cD41Fe921A743F2b5Fe71CC3070F5C176208
+          Hello, { account?.data }
         </h1>
         <h2 className="subtitle mb-5 text-xl">
           I hope you are having a great day!
@@ -22,7 +28,11 @@ const WalletBar = () => {
           <div>
             <div>
               <span>Currently on </span>
-              <strong className="text-2xl">Ethereum Main Network</strong>
+              <strong className="text-2xl">{ network?.data }</strong>
+            </div>
+            <div>
+              { network?.target }
+              { network?.isSuported ? "ok" : "deo"}
             </div>
           </div>
         </div>
