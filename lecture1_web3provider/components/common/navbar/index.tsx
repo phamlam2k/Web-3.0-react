@@ -3,14 +3,13 @@ import { setupHooks } from "@hooks/setupHooks";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
-  const { connect, isLoading, web3, hooks }: any = useWeb3()
-  const route = useRouter()
-  const { account } = hooks.useAccount()
+  const { connect, isLoading, web3, hooks }: any = useWeb3();
+  const route = useRouter();
+  const { account } = hooks.useAccount();
 
-  console.log(account)
   const handleInstall = () => {
-    window.open("https://metamask.io/download/", "_blank")
-  }
+    window.open("https://metamask.io/download/", "_blank");
+  };
 
   return (
     <section>
@@ -44,15 +43,21 @@ const Navbar = () => {
               >
                 Company
               </a>
-              {web3 ? 
-              account.data ? account.data :
-              (
-                <button
-                  className="font-medium mr-8 text-indigo-600 hover:text-indigo-500"
-                  onClick={connect}
-                >
-                  Log in
-                </button>
+              {web3 ? (
+                account.data ? (
+                  <button
+                    className="font-medium mr-8 text-indigo-600 hover:text-indigo-500"
+                  >
+                    Hi there {account.isAdmin && "Admin"}
+                  </button>
+                ) : (
+                  <button
+                    className="font-medium mr-8 text-indigo-600 hover:text-indigo-500"
+                    onClick={connect}
+                  >
+                    Log in
+                  </button>
+                )
               ) : (
                 <button
                   className="font-medium mr-8 text-indigo-600 hover:text-indigo-500"
@@ -69,4 +74,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar
+export default Navbar;
